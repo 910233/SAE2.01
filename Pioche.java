@@ -20,6 +20,21 @@ public class Pioche
 
 	private void initPioche()
 	{
-		//jetons.add(new Jeton());
+		this.jetons.add(new Jeton(Epice.CANNELLE ));
+		this.jetons.add(new Jeton(Epice.SAFRAN   ));
+		this.jetons.add(new Jeton(Epice.SAFRAN   ));
+		this.jetons.add(new Jeton(Epice.SAFRAN   ));
+		this.jetons.add(new Jeton(Epice.PAPRIKA  ));
+		this.jetons.add(new Jeton(Piece.ARGENT   ));
+		this.jetons.add(new Jeton(Piece.ARGENT   ));
+		this.jetons.add(new Jeton(Epice.POIVRE   ));
+		this.jetons.add(new Jeton(Epice.SESAME   ));
+		this.jetons.add(new Jeton(Epice.SAFRAN   ));
+		this.jetons.add(new Jeton(Piece.OR       ));
+		this.jetons.add(new Jeton(Epice.CARDAMONE));
+		this.jetons.add(new Jeton(Epice.CURCUMA  ));
+		this.jetons.add(new Jeton(Epice.SUMAC    ));
+		this.jetons.add(new Jeton(Epice.POIVRE   ));
+
 	}
 }
