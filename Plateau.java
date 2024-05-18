@@ -15,7 +15,7 @@ public class Plateau
 	{
 		if(this.nbPiece >= this.NB_PIECE_MAX) return false;
 
-		this.pieces[this.nbPiece++] = r;
+		this.pieces[this.nbPiece++] = r.getType();
 		return true;
 	}
 
