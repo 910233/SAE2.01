@@ -8,14 +8,14 @@ public class Plateau
 	public Plateau()
 	{
 		this.nbPiece = 0;
-		this.pieces  = new Epice[this.NB_PIECE_MAX];
+		this.pieces  = new Epice[Plateau.NB_PIECE_MAX];
 	}
 
 	public boolean ajouterRessource(Jeton r)
 	{
-		if(this.nbPiece >= this.NB_PIECE_MAX) return false;
+		if(this.nbPiece >= Plateau.NB_PIECE_MAX) return false;
 
-		this.pieces[this.nbPiece++] = r.getType();
+		this.pieces[this.nbPiece++] = (Epice) r.getType();
 		return true;
 	}
 
@@ -23,9 +23,9 @@ public class Plateau
 	{
 		String retour = "";
 
-		String ligne  = "\n+----+----+----+----+----+\n" 
+		String ligne  = "\n+----+----+----+----+----+\n";
 		
-		for(int i = 0; i < this.NB_PIECE_MAX; i++)
+		for(int i = 0; i < Plateau.NB_PIECE_MAX; i++)
 		{
 			if(i % 5 == 0) retour += ligne;
 
