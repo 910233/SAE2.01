@@ -1,1 +1,1 @@
-public Interface IRessource{}
+public interface IRessource{}
