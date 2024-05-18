@@ -1,36 +1,37 @@
 public class Plateau
 {
-	private final static int NB_PIECE_MAX = 15;
-	
+	private final static int NB_PIECE_MAX = 8;
 	private int     nbPiece;
-	private Epice[] pieces;
+
+
+	private Epice[][] pieces;
 
 	public Plateau()
 	{
 		this.nbPiece = 0;
-		this.pieces  = new Epice[Plateau.NB_PIECE_MAX];
+		this.pieces  = new Epice[3][5];
 	}
 
 	public boolean ajouterRessource(Jeton r)
 	{
-		if(this.nbPiece >= Plateau.NB_PIECE_MAX) return false;
+		
 
-		this.pieces[this.nbPiece++] = (Epice) r.getType();
-		return true;
 	}
 
 	public String toString()
 	{
 		String retour = "";
 
-		String ligne  = "\n+----+----+----+----+----+\n";
+		String ligne  = "+-----+-----+-----+-----+-----+";
 		
-		for(int i = 0; i < Plateau.NB_PIECE_MAX; i++)
+		for(int i = 0; i < this.pieces.length; i++)
 		{
-			if(i % 5 == 0) retour += ligne;
-
-			if (this.pieces[0] == null) retour += "|     |";
-			else                        retour += "| " + String.format("%3s", this.pieces[0].getLibCourt()) + " |";
+			retour += ligne + "\n|";
+			for(int j = 0; j < this.pieces[0].length; j++)
+			{
+				if (this.pieces[0] == null) retour += "     |";
+				else                        retour += " " + String.format("%3s", this.pieces[i][j].getLibCourt()) + " |";
+			}
 		}
 
 		return retour;
