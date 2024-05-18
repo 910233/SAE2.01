@@ -14,6 +14,20 @@ public class Plateau
 
 	public boolean ajouterRessource(Jeton r)
 	{
+		boolean retour = false;
+		// SI epice
+			// SI meme type que colonne actu
+			// FAIRE placer dans col actu --> TRUE
+			// SINON SI nouvelle col existe ET NON col epice existe
+			// FAIRE placer dans col suivante --> TRUE
+			// SINON --> FALSE
+		
+		// SI piece
+			// FAIRE recuperer valeur en bronze
+			// SI nb emplacements libres >=
+			// FAIRE nbPiece++ --> TRUE
+			// SINON --> FALSE
+			
 		return false;
 	}
 
