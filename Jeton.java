@@ -1,17 +1,19 @@
 public class Jeton
 {
+	IRessource type;
+
 	public Jeton(IRessource type)
 	{
-
+		this.type = type;
 	}
 
 	public IRessource getType()
 	{
-		return null;
+		return this.type;
 	}
 
 	public String toString()
 	{
-		return "";
+		return this.type.toString();
 	}
 }
