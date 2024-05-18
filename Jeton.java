@@ -7,11 +7,11 @@ public class Jeton
 
 	public IRessource getType()
 	{
-
+		return null;
 	}
 
 	public String toString()
 	{
-
+		return "";
 	}
 }
