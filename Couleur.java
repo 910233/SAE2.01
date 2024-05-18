@@ -33,17 +33,4 @@ public enum Couleur
 		Couleur[] values = Couleur.values();
 		return values[ordinal];
 	}
-	public static void main(String[] args) {
-
-		System.out.println(Couleur.BLANC.getColor());
-		System.out.println(Couleur.BLANC.getSymbole());
-
-		System.out.println(Couleur.VIOLET.getColor());
-		System.out.println(Couleur.VIOLET.getSymbole());
-
-		System.out.println(Couleur.valueOf(0));
-		System.out.println(Couleur.valueOf(1));
-		System.out.println(Couleur.valueOf(7));
-		System.out.println(Couleur.getNbCouleur());
-	}
 }

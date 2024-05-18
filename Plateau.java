@@ -1,6 +1,6 @@
 public class Plateau
 {
-	private final int NB_PIECE_MAX = 15;
+	private final static int NB_PIECE_MAX = 15;
 	
 	private int     nbPiece;
 	private Epice[] pieces;
