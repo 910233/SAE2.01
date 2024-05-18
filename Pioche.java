@@ -8,6 +8,7 @@ public class Pioche
 	public Pioche()
 	{
 		this.jetons = new ArrayList<Jeton>();
+		this.initPioche();
 	}
 
 	public Jeton tirerJeton()
