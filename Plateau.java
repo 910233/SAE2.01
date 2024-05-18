@@ -23,11 +23,11 @@ public class Plateau
 			// SINON --> FALSE
 		
 		// SI piece
-			// FAIRE recuperer valeur en bronze
-			// SI nb emplacements libres >=
+			// FAIRE recuperer valeur en pieces bronzes
+			// SI nb emplacements libres >= nb pieces bronze
 			// FAIRE nbPiece++ --> TRUE
 			// SINON --> FALSE
-			
+
 		return false;
 	}
 
