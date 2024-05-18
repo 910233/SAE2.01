@@ -1,13 +1,13 @@
 public enum Epice implements IRessource
 {
-	SESAME,
-	CURCUMA,
-	PAPRIKA,
-	SAFRAN,
-	SUMAC,
-	CANNELLE,
-	CARDAMONE,
-	POIVRE;
+	SESAME(Couleur.BLANC),
+	CURCUMA(Couleur.JAUNE),
+	PAPRIKA(Couleur.ROUGE),
+	SAFRAN(Couleur.ORANGE),
+	SUMAC(Couleur.VIOLET),
+	CANNELLE(Couleur.BRUN),
+	CARDAMONE(Couleur.VERT),
+	POIVRE(Couleur.NOIR);
 
 	private Couleur coul;
 
@@ -19,7 +19,7 @@ public enum Epice implements IRessource
 
 	public String getLibCourt() 
 	{
-		return (this.name().length <= 3 ? this.name() : this.name().substring(0, 3)); 
+		return (this.name().length() <= 3 ? this.name() : this.name().substring(0, 3)); 
 	}
 
 	public Couleur getCouleur (){ return this.coul;   }
