@@ -24,5 +24,11 @@ public class Controleur
 
 		System.out.println("Etat final du Plateau");
 		System.out.println(plateau);
+
+		plateau.score();
+		System.out.println();
+		System.out.println("Score : " + plateau.getScore() + " points");
+		System.out.println();
+		System.out.println(plateau.getDetailScore());
 	}
 }
