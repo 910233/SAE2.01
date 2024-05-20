@@ -13,8 +13,13 @@ public class Pioche
 
 	public Jeton tirerJeton()
 	{
-		Jeton jeton = jetons.get(0);
-		jetons.remove(0);
+		Jeton jeton = null;
+
+		if(jetons.size() > 0)
+		{
+			jeton = jetons.get(0);
+			jetons.remove(0);
+		}
 
 		return jeton;
 	}

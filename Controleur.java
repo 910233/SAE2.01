@@ -1,7 +1,34 @@
 public class Controleur 
-{
+{	
+	private IHMCUI  ihm;
+	private Plateau metier;
+
+	private Pioche  pioche;
+	
+	public Controleur ()
+	{
+		this.pioche = new Pioche();
+
+		this.metier = new Plateau ();
+		this.ihm    = new IHMCUI (this);
+	}
+
+	// Accesseurs
+	public Plateau getPlateau () { return this.metier; }
+
+	public Jeton tirerJeton () 
+	{
+		return this.pioche.tirerJeton();
+	}
+
+	public boolean ajouterRessource (Jeton r)
+	{
+		return this.metier.ajouterRessource(r);
+	}
 	public static void main(String[] args)
 	{
+		new Controleur();
+		/*
 		Plateau plateau = new Plateau();
 		Pioche pioche = new Pioche();
 		
@@ -30,5 +57,6 @@ public class Controleur
 		System.out.println("Score : " + plateau.getScore() + " points");
 		System.out.println();
 		System.out.println(plateau.getDetailScore());
+		*/
 	}
 }
