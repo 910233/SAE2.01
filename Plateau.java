@@ -8,8 +8,8 @@ public class Plateau
 
 	private int score;
 	private String detailScore;
-
 	private List<List<Epice>> tabEpice;
+
 	private final static int NB_COL_TAB_EPICE = 5;
 	private final static int NB_LIG_TAB_EPICE = 3;
 	private int colTabEpice;
@@ -24,15 +24,19 @@ public class Plateau
 
 		this.score = 0;
 		this.detailScore = "";
+		this.score();
 	}
 
-	public int getScore() { return this.score; }
-	public String getDetailScore() { return this.detailScore; }
+	public int               getScore       () { return this.score;       }
+	public String            getDetailScore () { return this.detailScore; }
+	public int               getNbPiece     () { return this.nbPiece;     }
+	public List<List<Epice>> getTabEpice    () { return this.tabEpice;    }
 
 	public boolean ajouterRessource(Jeton r)
 	{
+		if (r == null) return false;
 		boolean retour = false;
-		
+
 		if (r.getType() instanceof Epice)
 		{
 			Epice epice =  (Epice) r.getType();
@@ -87,7 +91,7 @@ public class Plateau
 		score = this.nbPiece * this.nbPiece;
 		detailScore +=   String.format("%-12s : " , " Pièces ")
 		               + score + " pt\n";
-		this.score += score;
+		this.score = score;
 		
 		// Colonnes
 		for(int i = 0; i < this.tabEpice.size(); i++)

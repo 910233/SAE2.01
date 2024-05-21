@@ -1,7 +1,9 @@
+import java.util.List;
+
 public class Controleur 
 {	
-	private IHMCUI  ihm;
-	private Plateau metier;
+	private FramePlateau ihm;
+	private Plateau      metier;
 
 	private Pioche  pioche;
 	
@@ -9,12 +11,29 @@ public class Controleur
 	{
 		this.pioche = new Pioche();
 
-		this.metier = new Plateau ();
-		this.ihm    = new IHMCUI (this);
+		this.metier = new Plateau      ();
+		this.ihm    = new FramePlateau (this);
 	}
 
-	// Accesseurs
-	public Plateau getPlateau () { return this.metier; }
+	public int    getScore       () { return this.metier.getScore();            }
+	public String getDetailScore () { return this.metier.getDetailScore();      }
+	public int    getNbPiece     () { return this.metier.getNbPiece();          }
+	public List<List<Epice>> getTabEpice () { return this.metier.getTabEpice(); }
+
+	
+	public void majTout ()
+	{
+		this.majPlateau();
+		this.score();
+		this.majScore();
+	}
+	public void majPlateau() { this.ihm.majPlateau(); }
+	public void majScore  () { this.ihm.majScore();   }
+
+
+	public void score     () { this.metier.score();   }
+
+	public String afficherPlateau () { return this.metier.toString(); }
 
 	public Jeton tirerJeton () 
 	{
@@ -23,40 +42,9 @@ public class Controleur
 
 	public boolean ajouterRessource (Jeton r)
 	{
-		return this.metier.ajouterRessource(r);
+		boolean retour = this.metier.ajouterRessource(r);
+		this.majTout();
+		return retour;
 	}
-	public static void main(String[] args)
-	{
-		new Controleur();
-		/*
-		Plateau plateau = new Plateau();
-		Pioche pioche = new Pioche();
-		
-		System.out.println("Etat initial du Plateau");
-		System.out.println(plateau);
-		System.out.println();
-
-		System.out.println("Ajout des ressources à partir des jetons de la pioche");
-
-		System.out.println();
-		for(int i = 0; i < 15; i++)
-		{
-			String sRes = "";
-			Jeton j = pioche.tirerJeton();
-			sRes += String.format("%-20s : ", j.toString());
-			sRes += plateau.ajouterRessource(j);
-			System.out.println(sRes);
-		}
-		System.out.println();
-
-		System.out.println("Etat final du Plateau");
-		System.out.println(plateau);
-
-		plateau.score();
-		System.out.println();
-		System.out.println("Score : " + plateau.getScore() + " points");
-		System.out.println();
-		System.out.println(plateau.getDetailScore());
-		*/
-	}
+	public static void main (String[] args) { new Controleur(); }
 }
