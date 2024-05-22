@@ -118,7 +118,7 @@ public class Plateau
 			}
 			/*detailScore +=   String.format("%-12s : " , " Colonne " + (i+1) )
 			               + score + " pt\n";*/
-			detailScore += " Colonne : " + score + " pt\n";
+			detailScore += " Colonne " + (i+1) + " : " + score + " pt\n";
 			this.score  += score;
 		}
 
@@ -142,7 +142,7 @@ public class Plateau
 			}
 			/*detailScore +=   String.format("%-12s : " , " Ligne   " + (i+1) )
 			               + score + " pt\n";*/
-			detailScore += " Ligne : " + (i+1) + score + " pt\n";
+			detailScore += " Ligne " + (i+1) + " : " + score + " pt\n";
 			this.score  += score;
 		}
 
