@@ -2,17 +2,17 @@ import java.util.List;
 
 public class Controleur 
 {	
-	private FramePlateau ihm;
-	private Plateau      metier;
+	private IHMGUI  ihm;
+	private Plateau metier;
 
 	private Pioche  pioche;
 	
 	public Controleur ()
 	{
-		this.pioche = new Pioche();
+		this.pioche = new Pioche  ();
 
-		this.metier = new Plateau      ();
-		this.ihm    = new FramePlateau (this);
+		this.metier = new Plateau ();
+		this.ihm    = new IHMGUI  (this);
 	}
 
 	public int    getScore       () { return this.metier.getScore();            }
@@ -47,4 +47,6 @@ public class Controleur
 		return retour;
 	}
 	public static void main (String[] args) { new Controleur(); }
+
+	public void deplacerLesFrames(char orig) { if(this.ihm != null) this.ihm.deplacerLesFrames(orig); }
 }

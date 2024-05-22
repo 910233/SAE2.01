@@ -1,24 +1,29 @@
-import javax.swing.*;
-
-import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Scanner;  
+import java.util.Scanner;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-public class PanelScore extends JPanel
+public class PanelJoueur extends JPanel implements ActionListener
 {
-	private Controleur ctrl;
-	
+	private Controleur   ctrl;
+
+	private JButton btnTirerJeton;
+
 	private List<JLabel> lblScores;
 
-	public PanelScore (Controleur ctrl)
+	public PanelJoueur (Controleur ctrl)
 	{
 		this.ctrl = ctrl;
-
 		this.lblScores = new LinkedList<JLabel>();
 
 		// Création des composants
+		this.btnTirerJeton = new JButton("Tirer Jeton");
+
 		int    score       = this.ctrl.getScore();
 		String detailScore = this.ctrl.getDetailScore();
 		Scanner sc         = new Scanner(detailScore);
@@ -30,13 +35,14 @@ public class PanelScore extends JPanel
 			this.lblScores.add(new JLabel(tmp));
 		}
 		sc.close();
-
 		
 		// Positionnement des composants
-		this.setLayout(new GridLayout(this.lblScores.size(), 1, 0, 0));
-		System.out.println(detailScore);
+		this.add(this.btnTirerJeton);
 		for(JLabel lbl : this.lblScores) this.add(lbl);
+
+		this.btnTirerJeton.addActionListener(this);
 	}
+
 
 	public void majScore() 
 	{
@@ -53,5 +59,14 @@ public class PanelScore extends JPanel
 		}
 		sc.close();
 	}
-}
 
+	@Override
+	public void actionPerformed(ActionEvent e) 
+	{
+		if(e.getSource() == this.btnTirerJeton)
+		{
+			this.ctrl.ajouterRessource(this.ctrl.tirerJeton());
+			System.out.println("Tirer Jeton");
+		}
+	}
+}
