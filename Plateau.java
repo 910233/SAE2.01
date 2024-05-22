@@ -50,22 +50,18 @@ public class Plateau
 					boolMemeEpice = true;
 			}
 
-			if(boolMemeEpice)
+			if(boolMemeEpice && this.tabEpice.get(i-1).size() < Plateau.NB_LIG_TAB_EPICE)
 			{
-				if (this.tabEpice.get(i-1).size() < Plateau.NB_LIG_TAB_EPICE)
-				{
-					this.tabEpice.get(i-1).add(epice);
-					retour = true;
-				}
+				this.tabEpice.get(i-1).add(epice);
+				retour = true;
 			}
-			else
+			else if(this.colTabEpice < Plateau.NB_COL_TAB_EPICE)
 			{
-				if(this.colTabEpice < Plateau.NB_COL_TAB_EPICE)
-				{
-					this.tabEpice.get(this.colTabEpice++).add(epice);
-					retour = true;
-				}
+				this.tabEpice.get(this.colTabEpice++).add(epice);
+				retour = true;
 			}
+
+			if(retour) this.triTabEpice();
 		}
 
 		if (r.getType() instanceof Piece)
@@ -80,6 +76,23 @@ public class Plateau
 		}
 
 		return retour;
+	}
+
+	// tri a bulle
+	public void triTabEpice()
+	{
+		for(int i = this.tabEpice.size()-1; i > 0; i--)
+		{
+			for(int j = i; j > this.tabEpice.size()-1-i; j--)
+			{
+				if(this.tabEpice.get(j).size() >= this.tabEpice.get(j-1).size())
+				{
+					List<Epice> tmp = this.tabEpice.get(j-1);
+					this.tabEpice.set(j-1, this.tabEpice.get(j));
+					this.tabEpice.set(j,   tmp);
+				}
+			}
+		}
 	}
 
 	public void score()

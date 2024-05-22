@@ -1,3 +1,4 @@
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
@@ -13,7 +14,6 @@ public class PanelJoueur extends JPanel implements ActionListener
 	private Controleur   ctrl;
 
 	private JButton btnTirerJeton;
-
 	private List<JLabel> lblScores;
 
 	public PanelJoueur (Controleur ctrl)
@@ -21,24 +21,27 @@ public class PanelJoueur extends JPanel implements ActionListener
 		this.ctrl = ctrl;
 		this.lblScores = new LinkedList<JLabel>();
 
+		
 		// Création des composants
 		this.btnTirerJeton = new JButton("Tirer Jeton");
 
-		int    score       = this.ctrl.getScore();
-		String detailScore = this.ctrl.getDetailScore();
-		Scanner sc         = new Scanner(detailScore);
-		
-		this.lblScores.add(new JLabel("Score : " + score + " points"));
-		while(sc.hasNextLine())
-		{
-			String tmp = sc.nextLine();
-			this.lblScores.add(new JLabel(tmp));
-		}
+		this.lblScores.add(new JLabel("Score : "));
+		this.lblScores.add(new JLabel(this.ctrl.getScore() + " points"));
+
+		Scanner sc  = new Scanner(this.ctrl.getDetailScore());
+		// "Detail : "
+		this.lblScores.add(new JLabel(sc.nextLine()));
+		this.lblScores.add(new JLabel(" "));
+
+		while(sc.hasNextLine()) this.lblScores.add(new JLabel(sc.nextLine()));
 		sc.close();
-		
+
 		// Positionnement des composants
+		this.setLayout(new FlowLayout(FlowLayout.LEFT));
 		this.add(this.btnTirerJeton);
+
 		for(JLabel lbl : this.lblScores) this.add(lbl);
+
 
 		this.btnTirerJeton.addActionListener(this);
 	}
@@ -46,18 +49,23 @@ public class PanelJoueur extends JPanel implements ActionListener
 
 	public void majScore() 
 	{
+		return;
+		
+		/* 
 		int    score       = this.ctrl.getScore();
 		String detailScore = this.ctrl.getDetailScore();
 
 		Scanner sc         = new Scanner(detailScore);
 
 		this.lblScores.get(0).setText("Score : " + score + " points");
-		for(int i = 1; sc.hasNextLine(); i++)
+
+		for(int i = 2; sc.hasNextLine(); i+=2)
 		{
 			String tmp = sc.nextLine();
 			this.lblScores.get(i).setText(tmp);
 		}
 		sc.close();
+		*/
 	}
 
 	@Override
@@ -66,7 +74,6 @@ public class PanelJoueur extends JPanel implements ActionListener
 		if(e.getSource() == this.btnTirerJeton)
 		{
 			this.ctrl.ajouterRessource(this.ctrl.tirerJeton());
-			System.out.println("Tirer Jeton");
 		}
 	}
 }
