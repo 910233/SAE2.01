@@ -1,4 +1,5 @@
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
@@ -18,54 +19,36 @@ public class PanelJoueur extends JPanel implements ActionListener
 
 	public PanelJoueur (Controleur ctrl)
 	{
-		this.ctrl = ctrl;
+		this.ctrl      = ctrl;
 		this.lblScores = new LinkedList<JLabel>();
 
-		
 		// Création des composants
 		this.btnTirerJeton = new JButton("Tirer Jeton");
 
-		this.lblScores.add(new JLabel("Score : "));
-		this.lblScores.add(new JLabel(this.ctrl.getScore() + " points"));
+		this.lblScores.add(new JLabel(String.format("%-50s", "Score : " + this.ctrl.getScore() + " points")));
 
-		Scanner sc  = new Scanner(this.ctrl.getDetailScore());
-		// "Detail : "
-		this.lblScores.add(new JLabel(sc.nextLine()));
-		this.lblScores.add(new JLabel(" "));
-
-		while(sc.hasNextLine()) this.lblScores.add(new JLabel(sc.nextLine()));
+		Scanner sc = new Scanner(this.ctrl.getDetailScore());
+		while(sc.hasNextLine()) this.lblScores.add(new JLabel(String.format("%-50s", sc.nextLine())));
 		sc.close();
 
 		// Positionnement des composants
 		this.setLayout(new FlowLayout(FlowLayout.LEFT));
 		this.add(this.btnTirerJeton);
-
 		for(JLabel lbl : this.lblScores) this.add(lbl);
 
-
+		// Activation des Composants
 		this.btnTirerJeton.addActionListener(this);
 	}
 
 
 	public void majScore() 
 	{
-		return;
-		
-		/* 
-		int    score       = this.ctrl.getScore();
-		String detailScore = this.ctrl.getDetailScore();
+		Scanner sc = new Scanner(this.ctrl.getDetailScore());
 
-		Scanner sc         = new Scanner(detailScore);
-
-		this.lblScores.get(0).setText("Score : " + score + " points");
-
-		for(int i = 2; sc.hasNextLine(); i+=2)
-		{
-			String tmp = sc.nextLine();
-			this.lblScores.get(i).setText(tmp);
-		}
+		this.lblScores.get(0).setText(String.format("%-50s", "Score : " + this.ctrl.getScore() + " points"));
+		for(int i = 1; sc.hasNextLine(); i++)
+			this.lblScores.get(i).setText(String.format("%-50s", sc.nextLine()));
 		sc.close();
-		*/
 	}
 
 	@Override

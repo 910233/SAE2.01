@@ -20,15 +20,12 @@ public class Controleur
 	public int    getNbPiece     () { return this.metier.getNbPiece();          }
 	public List<List<Epice>> getTabEpice () { return this.metier.getTabEpice(); }
 
-	
-	public void majTout ()
-	{
-		this.majPlateau();
-		this.score();
-		this.majScore();
-	}
 	public void majPlateau() { this.ihm.majPlateau(); }
 	public void majScore  () { this.ihm.majScore();   }
+	public void majHistorique (Jeton r, boolean retour) 
+	{
+		 this.ihm.majHistorique(r, retour);
+	}
 
 
 	public void score     () { this.metier.score();   }
@@ -43,7 +40,10 @@ public class Controleur
 	public boolean ajouterRessource (Jeton r)
 	{
 		boolean retour = this.metier.ajouterRessource(r);
-		this.majTout();
+		this.majHistorique(r, retour);
+		this.majPlateau();
+		this.score();
+		this.majScore();
 		return retour;
 	}
 	public static void main (String[] args) { new Controleur(); }

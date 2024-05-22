@@ -85,7 +85,7 @@ public class Plateau
 		{
 			for(int j = i; j > this.tabEpice.size()-1-i; j--)
 			{
-				if(this.tabEpice.get(j).size() >= this.tabEpice.get(j-1).size())
+				if(this.tabEpice.get(j).size() > this.tabEpice.get(j-1).size())
 				{
 					List<Epice> tmp = this.tabEpice.get(j-1);
 					this.tabEpice.set(j-1, this.tabEpice.get(j));
@@ -102,8 +102,9 @@ public class Plateau
 
 		// Pieces
 		score = this.nbPiece * this.nbPiece;
-		detailScore +=   String.format("%-12s : " , " Pièces ")
-		               + score + " pt\n";
+		/*detailScore +=   String.format("%-12s : " , " Pièces ")
+		               + score + " pt\n";*/
+		detailScore += " Pièces : " + score + " pt\n";
 		this.score = score;
 		
 		// Colonnes
@@ -115,9 +116,10 @@ public class Plateau
 				case 3  -> score = 10;
 				default -> score = 0;
 			}
-			detailScore +=   String.format("%-12s : " , " Colonne " + (i+1) )
-			               + score + " pt\n";
-			this.score += score;
+			/*detailScore +=   String.format("%-12s : " , " Colonne " + (i+1) )
+			               + score + " pt\n";*/
+			detailScore += " Colonne : " + score + " pt\n";
+			this.score  += score;
 		}
 
 		// Lignes
@@ -138,9 +140,10 @@ public class Plateau
 				case 5  -> score = 14;
 				default -> score = 0;
 			}
-			detailScore +=   String.format("%-12s : " , " Ligne   " + (i+1) )
-			               + score + " pt\n";
-			this.score += score;
+			/*detailScore +=   String.format("%-12s : " , " Ligne   " + (i+1) )
+			               + score + " pt\n";*/
+			detailScore += " Ligne : " + (i+1) + score + " pt\n";
+			this.score  += score;
 		}
 
 		this.detailScore = detailScore;
@@ -150,7 +153,7 @@ public class Plateau
 	{
 		String retour = "";
 		String ligne  = "+-----+-----+-----+-----+-----+";
-		String tmp = "";
+		String tmp    = "";
 		
 
 		for(int i = 0; i < Plateau.NB_LIG_TAB_EPICE; i++)
